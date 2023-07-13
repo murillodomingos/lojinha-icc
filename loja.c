@@ -32,6 +32,15 @@ void modifica_preco(Estoque *vet)
     scanf("%f", &vet[indice].preço);
 }
 
+void consulta_estoque(Estoque *vet, int indice)
+{
+    for (int i = 0; i < indice; i++)
+    {
+        printf("%d %s %d\n", vet[i].id, vet[i].nome, vet[i].qtd);
+    }
+    printf("--------------------------------------------------\n");
+}
+
 int main(void)
 {
     int produtos_iniciais, indice = 0, count = 1, saldo;
@@ -40,7 +49,7 @@ int main(void)
 
     scanf("%d", &produtos_iniciais);
     vet = (Estoque*)malloc(produtos_iniciais * sizeof(Estoque));
-    
+
     scanf("%d", &saldo);
 
     while(1)
@@ -70,7 +79,7 @@ int main(void)
         }
         else if(strcmp(sigla, "CE") == 0)
         {
-            // consulta_estoque(vet);
+            consulta_estoque(vet, indice);
         }
         else if(strcmp(sigla, "CS") == 0)
         {
