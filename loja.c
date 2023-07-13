@@ -34,12 +34,14 @@ void modifica_preco(Estoque *vet)
 
 int main(void)
 {
-    int produtosdia, indice = 0;
+    int produtos_iniciais, indice = 0, count = 1, saldo;
     char sigla[2];
     Estoque *vet;
 
-    scanf("%d", &produtosdia);
-    vet = (Estoque*)malloc(produtosdia * sizeof(Estoque));
+    scanf("%d", &produtos_iniciais);
+    vet = (Estoque*)malloc(produtos_iniciais * sizeof(Estoque));
+    
+    scanf("%d", &saldo);
 
     while(1)
     {
@@ -73,6 +75,12 @@ int main(void)
         else if(strcmp(sigla, "CS") == 0)
         {
             // consulta_saldo(vet);
+        }
+
+        if(indice > produtos_iniciais)
+        {
+            vet = (Estoque*)realloc(vet, produtos_iniciais + 10 * count * sizeof(Estoque));
+            count++;
         }
     }
 
