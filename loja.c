@@ -41,16 +41,23 @@ void consulta_estoque(Estoque *vet, int indice)
     printf("--------------------------------------------------\n");
 }
 
+void consulta_saldo(float saldo)
+{
+    printf("Saldo: %.2f\n", saldo);
+    printf("--------------------------------------------------\n");
+}
+
 int main(void)
 {
-    int produtos_iniciais, indice = 0, count = 1, saldo;
+    int produtos_iniciais, indice = 0, count = 1;
+    float saldo;
     char sigla[2];
     Estoque *vet;
 
     scanf("%d", &produtos_iniciais);
     vet = (Estoque*)malloc(produtos_iniciais * sizeof(Estoque));
 
-    scanf("%d", &saldo);
+    scanf("%f", &saldo);
 
     while(1)
     {
@@ -83,7 +90,7 @@ int main(void)
         }
         else if(strcmp(sigla, "CS") == 0)
         {
-            // consulta_saldo(vet);
+            consulta_saldo(saldo);
         }
 
         if(indice > produtos_iniciais)
@@ -92,9 +99,4 @@ int main(void)
             count++;
         }
     }
-
-    printf("%d\n", vet[0].id);
-    printf("%s\n", vet[0].nome);
-    printf("%.2f\n", vet[0].preço);
-    printf("%d\n", vet[0].qtd);
 }
